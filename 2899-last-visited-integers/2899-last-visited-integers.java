@@ -1,28 +1,36 @@
 class Solution {
     public List<Integer> lastVisitedIntegers(int[] nums) {
-        List<Integer> seen=new ArrayList<>();
-        List<Integer> ans=new ArrayList<>();
+
+        ArrayList<Integer> seen = new ArrayList<>();
+        ArrayList<Integer> ans = new ArrayList<>();
         int k=0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]>0){
-                seen.add(0,nums[i]);
-            }
-            else{
-                if(i!=0 && nums[i-1]!=-1){
-                    k=1;
-                }
-                else{
-                    k++;
-                }
-                
-                if(k<=seen.size()){
+
+        for(int i=0; i<nums.length; i++){
+            if (nums[i]<0){
+                k++;
+
+                if(seen.size() >= k){
                     ans.add(seen.get(k-1));
-                }
-                else{
+                }else{
                     ans.add(-1);
                 }
+            }else{
+                seen.add(0, nums[i]);
+                k=0;
             }
         }
+
         return ans;
     }
 }
+
+
+/**
+
+seen = queue of met positive nums
+
+number of appearence -1 = K
+
+ans = queue of seen[index] when met meet append K
+
+ */
