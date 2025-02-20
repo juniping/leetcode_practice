@@ -7,7 +7,7 @@ class Solution {
     public int solution(int n, int[][] computers) {
         int answer = 0; // 네트워크의 개수
         
-        arr = new ArrayList[n]; // 정점의 개수 +1 (1부터 고려하기 위해) 
+        arr = new ArrayList[n]; // 정점의 개수
         isVisited = new boolean[n]; // 방문여부를 체크
         
         for(int i=0; i<n; i++){
