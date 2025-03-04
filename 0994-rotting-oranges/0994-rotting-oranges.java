@@ -1,7 +1,5 @@
 class Solution {
     public int orangesRotting(int[][] grid) {
-        int start_i = 0; //rotten_i
-        int start_j = 0; //rotten_j
         boolean isV[][] = new boolean[grid.length][grid[0].length];
         Queue<int []> queue = new LinkedList<>();
         int fresh =0;
@@ -26,22 +24,26 @@ class Solution {
         int dy[] = {0, 1, 0, -1};
 
         while(!queue.isEmpty()){
-            int cur[] = queue.poll();
+            int size = queue.size();
             boolean isRotten = false;
-            int x = cur[0];
-            int y = cur[1];
-            isV[x][y] = true;
-            for(int i=0; i<4; i++){
-                int newX = dx[i]+x;
-                int newY = dy[i]+y;
 
-                if(newX>=0 && newX<grid.length && newY>=0 && newY<grid[0].length && !isV[newX][newY] && grid[newX][newY]==1){
-                    queue.add(new int[]{newX, newY});
-                    isV[newX][newY] = true;
-                    isRotten = true;
-                    fresh--;
+            for(int k=0; k<size; k++){
+                int cur[] = queue.poll();
+                int x = cur[0];
+                int y = cur[1];
+                isV[x][y] = true;
+                for(int i=0; i<4; i++){
+                    int newX = dx[i]+x;
+                    int newY = dy[i]+y;
+                    if(newX>=0 && newX<grid.length && newY>=0 && newY<grid[0].length && !isV[newX][newY] && grid[newX][newY]==1){
+                        queue.add(new int[]{newX, newY});
+                        isV[newX][newY] = true;
+                        isRotten = true;
+                        fresh--;
+                    }
                 }
             }
+            
             if(isRotten) result++;
         }
 
