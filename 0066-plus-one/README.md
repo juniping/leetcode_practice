@@ -5,7 +5,7 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre>
+<pre> 
 <strong>Input:</strong> digits = [1,2,3]
 <strong>Output:</strong> [1,2,4]
 <strong>Explanation:</strong> The array represents the integer 123.
