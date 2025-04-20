@@ -1,59 +1,28 @@
 class Solution {
     public int[] solution(int[] A, int K) {
-        // Implement your solution here
 
-        int n = A.length;
-
-        if(n==0 || K % n == 0){
+        int size = A.length;
+        if(size==0){
             return A;
         }
+        int temp[] = new int[size]; // 새로운 rotation 결과
 
-        int rotated[] = new int[n];
-        int pass = K % n;
+        // K번 반복
+        for(int i=0; i<K%size; i++){
 
-        for(int i=0; i<n ; i++){
-            rotated[(i+pass) % n] = A[i]; 
+            // rotation
+            temp[0] = A[size-1]; //A의 맨 마지막 값이 temp의 첫번째 값이 된다.
+
+            // n번재 값은 n+1에 배치한다.(0번째 값은 1번째 값이 된다.)
+            for(int j=0; j<size-1; j++){
+                temp[j+1] = A[j];
+            }
+
+            // 변경된 배열 내용을 다시 A에 반영.
+            for(int j=0; j<size; j++){
+                A[j] = temp[j];
+            }
         }
-
-        return rotated;
+        return A;
     }
 }
-
-/*
-An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place).
-
-The goal is to rotate array A K times; that is, each element of A will be shifted to the right K times.
-
-Write a function:
-
-class Solution { public int[] solution(int[] A, int K); }
-
-that, given an array A consisting of N integers and an integer K, returns the array A rotated K times.
-
-For example, given
-
-    A = [3, 8, 9, 7, 6]
-    K = 3
-the function should return [9, 7, 6, 3, 8]. Three rotations were made:
-
-    [3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]
-    [6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]
-    [7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]
-For another example, given
-
-    A = [0, 0, 0]
-    K = 1
-the function should return [0, 0, 0]
-
-Given
-
-    A = [1, 2, 3, 4]
-    K = 4
-the function should return [1, 2, 3, 4]
-
-Assume that:
-
-N and K are integers within the range [0..100];
-each element of array A is an integer within the range [−1,000..1,000].
-In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
-*/
