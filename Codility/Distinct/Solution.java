@@ -1,6 +1,3 @@
-import java.util.*;
-
-
 class Solution {
     public int solution(int[] A) {
         HashSet<Integer> arr = new HashSet<>();
