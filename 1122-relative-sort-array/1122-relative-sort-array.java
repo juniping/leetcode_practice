@@ -1,17 +1,5 @@
 class Solution {
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
-        // arr1이랑 같은 크기의 배열을 만든다.
-
-        // arr2를 돌고 arr1에서 그 값을 찾아.
-        // map에 다가 찾으면 key, 1 하고 이미 있었으면 2개
-
-        // arr2를 하나씩 돌면서 arr2의 값과 같은 것을 찾아서 있는경우에 arr1에 넣는다 (value만큼 반복해서)
-        // 이때 인덱스가 하나 있어야겠고.
-
-        // arr1은 arr2에 포함되지 않는 수도 존재한다.
-
-        Arrays.sort(arr1);
-
         Map<Integer, Integer> map = new HashMap<>();
 
         for(int i: arr1){
